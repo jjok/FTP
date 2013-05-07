@@ -55,7 +55,7 @@ class RawFTP {
 	}
 	
 	/**
-	 * 
+	 * Request execution of a command on the FTP server.
 	 * @param string $command
 	 * @return boolean
 	 */
