@@ -21,28 +21,6 @@ class FTP extends RawFTP {
 	public function login($user = '', $password = '') {
 		return @ftp_login($this->connection, $user, $password);
 	}
-
-	/**
-	 * Download a file from the server.
-	 * @param string $local_file
-	 * @param string $remote_file
-	 * @param integer $mode
-	 * @return boolean
-	 */
-	public function get($local_file, $remote_file, $mode = \FTP_BINARY) {
-		return ftp_get($this->connection, $local_file, $remote_file, $mode);
-	}
-
-	/**
-	 * Upload a file to the server.
-	 * @param string $remote_file
-	 * @param string $local_file
-	 * @param integer $mode
-	 * @return boolean
-	 */
-	public function put($remote_file, $local_file, $mode = \FTP_ASCII) {
-		return ftp_put($this->connection, $remote_file, $local_file, \FTP_ASCII);
-	}
 	
 	/**
 	 * Rename a file or directory on the server.
@@ -55,6 +33,15 @@ class FTP extends RawFTP {
 	}
 	
 	/**
+	 * Delete a file on the server.
+	 * @param string $path
+	 * @return boolean
+	 */
+	public function delete($path) {
+		return ftp_delete($this->connection, $path);
+	}
+	
+	/**
 	 * 
 	 * @param string $directory
 	 * @return string
@@ -63,10 +50,14 @@ class FTP extends RawFTP {
 		return ftp_mkdir($this->connection, $name);
 	}
 
-	public function nlist() {
-		print_r(ftp_nlist($this->connection, '.'));
+	/**
+	 * List files in the given directory.
+	 * @param string $directory
+	 */
+	public function nlist($directory) {
+		//print_r(ftp_nlist($this->connection, '.'));
 		//print_r(ftp_rawlist($this->connection, '.'));
-		//return 
+		return ftp_nlist($this->connection, $directory);
 	}
 
 	/**
