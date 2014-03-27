@@ -42,7 +42,7 @@ class FTP extends RawFTP {
 	}
 	
 	/**
-	 * 
+	 * Create a directory.
 	 * @param string $directory
 	 * @return string
 	 */
@@ -53,10 +53,9 @@ class FTP extends RawFTP {
 	/**
 	 * List files in the given directory.
 	 * @param string $directory
+	 * @return array
 	 */
-	public function nlist($directory) {
-		//print_r(ftp_nlist($this->connection, '.'));
-		//print_r(ftp_rawlist($this->connection, '.'));
+	public function nlist($directory = '.') {
 		return ftp_nlist($this->connection, $directory);
 	}
 
