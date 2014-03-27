@@ -60,6 +60,6 @@ class RawFTP {
 	 * @return boolean
 	 */
 	public function exec($command) {
-		return ftp_exec($this->connection, $command);
+		return @ftp_exec($this->connection, $command);
 	}
 }
