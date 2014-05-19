@@ -16,7 +16,7 @@ class SyncFTP extends FTP {
 	 * @param number $resumepos
 	 * @return boolean
 	 */
-	public function get($local_file, $remote_file, $mode = \FTP_BINARY, $resumepos = 0) {
+	public function get($local_file, $remote_file, $mode = FTP::BINARY, $resumepos = 0) {
 		return @ftp_get($this->connection, $local_file, $remote_file, $mode, $resumepos);
 	}
 	
@@ -28,7 +28,7 @@ class SyncFTP extends FTP {
 	 * @param number $resumepos
 	 * @return boolean
 	 */
-	public function put($remote_file, $local_file, $mode = \FTP_ASCII, $resumepos = 0) {
+	public function put($remote_file, $local_file, $mode = FTP::ASCII, $resumepos = 0) {
 		return ftp_put($this->connection, $remote_file, $local_file, $mode, $resumepos);
 	}
 }
