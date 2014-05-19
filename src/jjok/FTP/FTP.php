@@ -83,4 +83,13 @@ class FTP extends RawFTP {
 	public function cdup() {
 		return ftp_cdup($this->connection);
 	}
+	
+	/**
+	 * Turns passive mode on or off.
+	 * @param boolean $pasv
+	 * @return boolean
+	 */
+	public function pasv($pasv) {
+		return ftp_pasv($this->connection, $pasv);
+	}
 }
